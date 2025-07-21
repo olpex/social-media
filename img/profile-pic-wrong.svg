@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <!-- Background circle -->
+  <circle cx="40" cy="40" r="40" fill="#dc3545" />
+  
+  <!-- User silhouette -->
+  <circle cx="40" cy="30" r="15" fill="#ffffff" />
+  <path d="M40,50 C25,50 20,65 20,65 L60,65 C60,65 55,50 40,50 Z" fill="#ffffff" />
+  
+  <!-- Personal info indicators (showing too much info) -->
+  <rect x="10" y="10" width="15" height="3" fill="#ffffff" />
+  <rect x="10" y="15" width="10" height="3" fill="#ffffff" />
+  <rect x="55" y="10" width="15" height="3" fill="#ffffff" />
+  <rect x="60" y="15" width="10" height="3" fill="#ffffff" />
+  
+  <!-- Warning symbol -->
+  <circle cx="65" cy="65" r="12" fill="#ffffff" />
+  <text x="65" y="70" font-family="Arial, sans-serif" font-size="16" fill="#dc3545" text-anchor="middle" font-weight="bold">!</text>
+</svg>

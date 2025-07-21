@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <!-- Background circle -->
+  <circle cx="40" cy="40" r="40" fill="#28a745" />
+  
+  <!-- User silhouette -->
+  <circle cx="40" cy="30" r="15" fill="#ffffff" />
+  <path d="M40,50 C25,50 20,65 20,65 L60,65 C60,65 55,50 40,50 Z" fill="#ffffff" />
+  
+  <!-- Minimal info indicators (showing appropriate amount of info) -->
+  <rect x="30" y="10" width="20" height="3" fill="#ffffff" />
+  
+  <!-- Check symbol -->
+  <circle cx="65" cy="65" r="12" fill="#ffffff" />
+  <text x="65" y="70" font-family="Arial, sans-serif" font-size="16" fill="#28a745" text-anchor="middle" font-weight="bold">✓</text>
+</svg>

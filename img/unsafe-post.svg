@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
+  <!-- Background -->
+  <rect width="300" height="200" fill="#f8f9fa" />
+  
+  <!-- Post container -->
+  <rect x="20" y="20" width="260" height="160" fill="#ffffff" stroke="#dee2e6" stroke-width="1" rx="5" ry="5" />
+  
+  <!-- Post header -->
+  <circle cx="45" cy="45" r="15" fill="#6c757d" />
+  <text x="70" y="50" font-family="Arial, sans-serif" font-size="14" fill="#212529" font-weight="bold">Користувач</text>
+  
+  <!-- Privacy indicator -->
+  <rect x="200" y="35" width="70" height="20" fill="#f8d7da" rx="10" ry="10" />
+  <text x="235" y="50" font-family="Arial, sans-serif" font-size="12" fill="#dc3545" text-anchor="middle">Публічно</text>
+  
+  <!-- Post content -->
+  <rect x="30" y="65" width="240" height="70" fill="#f8f9fa" rx="3" ry="3" />
+  <text x="40" y="85" font-family="Arial, sans-serif" font-size="12" fill="#212529">Сьогодні я сам вдома за адресою</text>
+  <text x="40" y="105" font-family="Arial, sans-serif" font-size="12" fill="#212529">вул. Шевченка 123, кв. 45</text>
+  
+  <!-- Location indicator -->
+  <rect x="40" y="115" width="100" height="15" fill="#f8d7da" rx="3" ry="3" />
+  <text x="50" y="126" font-family="Arial, sans-serif" font-size="10" fill="#dc3545">📍 Київ, Україна</text>
+  
+  <!-- Post footer -->
+  <line x1="30" y1="145" x2="270" y2="145" stroke="#dee2e6" stroke-width="1" />
+  
+  <!-- Warning badge -->
+  <circle cx="250" cy="160" r="12" fill="#dc3545" />
+  <text x="250" y="165" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">!</text>
+  
+  <!-- Warning notes -->
+  <text x="40" y="160" font-family="Arial, sans-serif" font-size="10" fill="#dc3545">✗ Розкрита особиста інформація</text>
+  <text x="40" y="175" font-family="Arial, sans-serif" font-size="10" fill="#dc3545">✗ Увімкнена геолокація</text>
+</svg>

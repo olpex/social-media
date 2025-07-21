@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
+  <!-- Background -->
+  <rect width="300" height="200" fill="#E1306C" opacity="0.05" />
+  
+  <!-- Instagram header -->
+  <rect x="0" y="0" width="300" height="40" fill="#E1306C" />
+  <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" fill="#ffffff" font-weight="bold">Instagram</text>
+  
+  <!-- Profile container -->
+  <rect x="20" y="50" width="260" height="130" fill="#ffffff" rx="5" ry="5" />
+  
+  <!-- Profile header -->
+  <rect x="20" y="50" width="260" height="60" fill="#fafafa" rx="5" ry="5" />
+  
+  <!-- Profile picture -->
+  <circle cx="70" cy="90" r="30" fill="#E1306C" opacity="0.7" />
+  <circle cx="70" cy="80" r="10" fill="#ffffff" />
+  <path d="M70,95 C60,95 55,105 55,105 L85,105 C85,105 80,95 70,95 Z" fill="#ffffff" />
+  
+  <!-- Profile name -->
+  <text x="120" y="85" font-family="Arial, sans-serif" font-size="14" fill="#262626" font-weight="bold">username</text>
+  <text x="120" y="105" font-family="Arial, sans-serif" font-size="12" fill="#8e8e8e">Приватний акаунт</text>
+  
+  <!-- Privacy settings -->
+  <rect x="40" y="120" width="220" height="20" fill="#e4f0e8" rx="3" ry="3" />
+  <text x="50" y="135" font-family="Arial, sans-serif" font-size="12" fill="#28a745">✓ Обмежений доступ до історій</text>
+  
+  <rect x="40" y="145" width="220" height="20" fill="#e4f0e8" rx="3" ry="3" />
+  <text x="50" y="160" font-family="Arial, sans-serif" font-size="12" fill="#28a745">✓ Вимкнені мітки на фото</text>
+  
+  <!-- Security badge -->
+  <circle cx="250" cy="70" r="15" fill="#28a745" />
+  <text x="250" y="75" font-family="Arial, sans-serif" font-size="16" fill="#ffffff" text-anchor="middle">✓</text>
+</svg>
