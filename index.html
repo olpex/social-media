@@ -3,41 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Безпека в соціальних мережах для старшокласників</title>
+    <title>Безпека в соціальних мережах</title>
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>
+    <header role="banner">
         <div class="container">
             <div class="logo">
                 <h1>СоцМережі<span>Безпека</span></h1>
             </div>
-            <nav>
-                <div class="menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul class="menu">
-                    <li><a href="#home" class="active">Головна</a></li>
+            <nav role="navigation" aria-label="Основна навігація">
+                <button class="menu-toggle" aria-label="Відкрити мобільне меню" aria-expanded="false" aria-controls="main-menu">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+                <ul class="menu" id="main-menu">
+                    <li><a href="#home" class="active" aria-current="page">Головна</a></li>
                     <li><a href="#basics">Основи безпеки</a></li>
+                    <li><a href="#threats">Загрози</a></li>
                     <li><a href="#examples">Приклади</a></li>
                     <li><a href="#quiz">Перевір себе</a></li>
-                    <li><a href="#resources">Корисні посилання</a></li>
+                    <li><a href="#tools">Інструменти</a></li>
+                    <li><a href="#resources">Ресурси</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h2>Безпека в соціальних мережах</h2>
-                <p>Навчальний ресурс для старшокласників про безпечне використання соціальних мереж та створення профілів</p>
-                <a href="#basics" class="btn">Почати навчання</a>
+    <main>
+        <section id="home" class="hero" role="banner">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Професійний гід з кібербезпеки</span>
+                    </div>
+                    <h2>Безпека в соціальних мережах</h2>
+                    <p>Комплексний ресурс про безпечне використання соціальних мереж, захист персональних даних та протидію кіберзагрозам для сучасних користувачів</p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">12+</div>
+                            <div class="stat-label">Розділів безпеки</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Практичних порад</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Актуальна інформація</div>
+                        </div>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="#basics" class="btn btn-primary" aria-label="Перейти до розділу основ безпеки">
+                            <i class="fas fa-rocket"></i>
+                            Почати навчання
+                        </a>
+                        <a href="#quiz" class="btn btn-outline" aria-label="Перейти до тестування знань">
+                            <i class="fas fa-brain"></i>
+                            Перевірити знання
+                        </a>
+                    </div>
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Експертні поради</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Практичні приклади</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Інтерактивний квіз</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="security-dashboard">
+                        <div class="dashboard-header">
+                            <h4><i class="fas fa-shield-alt"></i> Панель безпеки</h4>
+                            <div class="status-indicator active">
+                                <span class="status-dot"></span>
+                                Захищено
+                            </div>
+                        </div>
+                        <div class="security-metrics">
+                            <div class="metric">
+                                <div class="metric-icon">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="metric-info">
+                                    <div class="metric-value">98%</div>
+                                    <div class="metric-label">Надійність паролів</div>
+                                </div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-icon">
+                                    <i class="fas fa-user-shield"></i>
+                                </div>
+                                <div class="metric-info">
+                                    <div class="metric-value">Активна</div>
+                                    <div class="metric-label">Двофакторна автентифікація</div>
+                                </div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-icon">
+                                    <i class="fas fa-eye-slash"></i>
+                                </div>
+                                <div class="metric-info">
+                                    <div class="metric-value">Приватний</div>
+                                    <div class="metric-label">Статус профілю</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
     <section id="basics" class="section">
         <div class="container">
@@ -92,8 +176,8 @@
                     <div class="card-icon">
                         <i class="fas fa-clock"></i>
                     </div>
-                    <h3>Обмеження часу</h3>
-                    <p>Встановлюйте обмеження часу використання соціальних мереж. Використовуйте функції батьківського контролю для регулювання часу.</p>
+                    <h3>Управління часом</h3>
+                    <p>Встановлюйте обмеження часу використання соціальних мереж. Використовуйте спеціальні додатки для відстеження та оптимізації часу онлайн.</p>
                 </div>
                 <div class="card">
                     <div class="card-icon">
@@ -115,6 +199,193 @@
                     </div>
                     <h3>Прихована активність</h3>
                     <p>Використовуйте функції приховування вашої активності, статусу онлайн та переглянутих історій від сторонніх користувачів.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <h3>Захист від соціальної інженерії</h3>
+                    <p>Розпізнавайте спроби маніпуляцій через соціальні мережі: підроблені профілі, провокативні повідомлення та запити на конфіденційну інформацію.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Управління персональними даними</h3>
+                    <p>Регулярно переглядайте та видаляйте непотрібні дані, контролюйте, які додатки мають доступ до ваших акаунтів.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Безпека мережевих з'єднань</h3>
+                    <p>Уникайте входу в соціальні мережі через публічні Wi-Fi мережі. Використовуйте VPN для додаткового захисту трафіку.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Розпізнавання ботів та фейків</h3>
+                    <p>Навчіться ідентифікувати автоматизовані акаунти, фейкові профілі та маніпулятивний контент у соціальних мережах.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Статистика та тренди безпеки -->
+    <section id="statistics" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2>Актуальна статистика кіберзагроз 2024</h2>
+                <p>Дані про поточний стан кібербезпеки в соціальних мережах</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">4.8 млрд</div>
+                        <div class="stat-label">Користувачів соціальних мереж у світі</div>
+                        <div class="stat-trend positive">
+                            <i class="fas fa-arrow-up"></i>
+                            +4.2% за рік
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">73%</div>
+                        <div class="stat-label">Кіберзлочинів починаються з соціальних мереж</div>
+                        <div class="stat-trend negative">
+                            <i class="fas fa-arrow-up"></i>
+                            +12% за рік
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">1 з 5</div>
+                        <div class="stat-label">Користувачів стали жертвами фішингу</div>
+                        <div class="stat-trend negative">
+                            <i class="fas fa-arrow-up"></i>
+                            +8% за рік
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">45%</div>
+                        <div class="stat-label">Користувачів використовують слабкі паролі</div>
+                        <div class="stat-trend negative">
+                            <i class="fas fa-arrow-down"></i>
+                            -3% за рік
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="threat-timeline">
+                <h3>Топ-5 загроз 2024 року</h3>
+                <div class="timeline-items">
+                    <div class="timeline-item">
+                        <div class="timeline-number">1</div>
+                        <div class="timeline-content">
+                            <h4>AI-генеровані фейки</h4>
+                            <p>Використання штучного інтелекту для створення реалістичних фейкових профілів та контенту</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">2</div>
+                        <div class="timeline-content">
+                            <h4>Квішинг (QR-фішинг)</h4>
+                            <p>Шахрайські QR-коди в постах та історіях для крадіжки даних</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">3</div>
+                        <div class="timeline-content">
+                            <h4>Криптошахрайство</h4>
+                            <p>Фальшиві інвестиційні схеми та розіграші криптовалют</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">4</div>
+                        <div class="timeline-content">
+                            <h4>Романтичне шахрайство</h4>
+                            <p>Створення фальшивих романтичних стосунків для фінансових махінацій</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">5</div>
+                        <div class="timeline-content">
+                            <h4>Викрадення акаунтів</h4>
+                            <p>Масове захоплення акаунтів через слабкі паролі та відсутність 2FA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Практичні приклади загроз -->
+    <section id="threats" class="section">
+        <div class="container">
+            <h2>Практичні приклади кіберзагроз</h2>
+            <div class="examples-grid">
+                <div class="example-card threat-example">
+                    <div class="example-header">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Фішинг через DM</h3>
+                    </div>
+                    <div class="example-content">
+                        <p><strong>Приклад повідомлення:</strong></p>
+                        <div class="message-example danger">
+                            "Привіт! Твій акаунт буде заблокований через 24 години. Натисни на посилання для підтвердження: bit.ly/fake-link"
+                        </div>
+                        <p><strong>Ознаки загрози:</strong> Терміновість, підозріле посилання, запит на дії</p>
+                        <p><strong>Правильна реакція:</strong> Не переходити за посиланням, перевірити через офіційні канали</p>
+                    </div>
+                </div>
+                
+                <div class="example-card threat-example">
+                    <div class="example-header">
+                        <i class="fas fa-user-secret"></i>
+                        <h3>Соціальна інженерія</h3>
+                    </div>
+                    <div class="example-content">
+                        <p><strong>Приклад ситуації:</strong></p>
+                        <div class="message-example danger">
+                            Незнайомець додається в друзі, видаючи себе за колегу, потім просить "допомогти з терміновим переказом грошей"
+                        </div>
+                        <p><strong>Ознаки загрози:</strong> Швидке встановлення довіри, фінансові запити</p>
+                        <p><strong>Правильна реакція:</strong> Перевірити особу через інші канали зв'язку</p>
+                    </div>
+                </div>
+                
+                <div class="example-card threat-example">
+                    <div class="example-header">
+                        <i class="fas fa-robot"></i>
+                        <h3>Підозрілий бот</h3>
+                    </div>
+                    <div class="example-content">
+                        <p><strong>Ознаки бота:</strong></p>
+                        <ul>
+                            <li>Профіль створений недавно</li>
+                            <li>Мало оригінального контенту</li>
+                            <li>Повторювані коментарі</li>
+                            <li>Підозрілі посилання в біо</li>
+                        </ul>
+                        <p><strong>Правильна реакція:</strong> Заблокувати, поскаржитися на спам</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -178,15 +449,15 @@
                                     <div class="profile-header">
                                         <img src="./img/profile-pic-wrong.svg" alt="Неправильне фото профілю" class="avatar">
                                         <div class="profile-info">
-                                            <h4>Іван Петренко, 16 років</h4>
-                                            <p>Школа №123, 10-А клас</p>
+                                            <h4>Іван Петренко, 28 років</h4>
+                                            <p>IT-спеціаліст, ТОВ "Технології"</p>
                                             <p>м. Київ, вул. Шевченка, 45, кв. 12</p>
                                             <p>Тел: +380991234567</p>
                                             <p>Email: ivan.petrenko@gmail.com</p>
                                         </div>
                                     </div>
                                 </div>
-                                <p class="explanation">Цей профіль містить забагато особистої інформації, включаючи повне ім'я, вік, школу, клас, домашню адресу, телефон та електронну пошту. Така відкритість може призвести до серйозних проблем з безпекою.</p>
+                                <p class="explanation">Цей профіль містить забагато особистої інформації, включаючи повне ім'я, вік, місце роботи, домашню адресу, телефон та електронну пошту. Така відкритість може призвести до витоку даних, соціальної інженерії та інших серйозних проблем з безпекою.</p>
                             </div>
                             <div class="comparison-item correct">
                                 <h3>Правильно <i class="fas fa-check"></i></h3>
@@ -195,13 +466,13 @@
                                         <img src="./img/profile-pic-correct.svg" alt="Правильне фото профілю" class="avatar">
                                         <div class="profile-info">
                                             <h4>Іван П.</h4>
-                                            <p>Учень старшої школи</p>
+                                            <p>IT-спеціаліст</p>
                                             <p>м. Київ</p>
                                             <p>Контакти: доступні лише для друзів</p>
                                         </div>
                                     </div>
                                 </div>
-                                <p class="explanation">Цей профіль містить обмежену особисту інформацію, використовуючи лише ім'я та першу літеру прізвища, загальну інформацію про навчання та місто. Контактна інформація прихована від сторонніх осіб.</p>
+                                <p class="explanation">Цей профіль містить обмежену особисту інформацію, використовуючи лише ім'я та першу літеру прізвища, загальну інформацію про професію та місто. Контактна інформація прихована від сторонніх осіб, що значно підвищує рівень захисту від цільових атак.</p>
                             </div>
                         </div>
                     </div>
@@ -218,7 +489,7 @@
                                         </div>
                                     </div>
                                     <div class="post-content">
-                                        <p>Нарешті канікули! Їду з батьками на два тижні до Єгипту. Наша адреса буде: готель "Сонячний берег", кімната 507. Якщо хтось хоче зв'язатися, мій номер: +380991234567</p>
+                                        <p>Нарешті відпустка! Їду на два тижні до Єгипту. Наша адреса буде: готель "Сонячний берег", кімната 507. Якщо хтось хоче зв'язатися, мій номер: +380991234567. Також залишаю ключі від квартири сусідці з 3-го поверху.</p>
                                         <img src="./img/unsafe-post.svg" alt="Фото відпустки" class="post-img">
                                     </div>
                                     <div class="post-footer">
@@ -227,7 +498,7 @@
                                         <span><i class="fas fa-share"></i> 3</span>
                                     </div>
                                 </div>
-                                <p class="explanation">Ця публікація розкриває забагато особистої інформації: точні дати відсутності вдома, місце перебування, номер кімнати та контактний телефон. Така інформація може бути використана зловмисниками.</p>
+                                <p class="explanation">Ця публікація розкриває забагато особистої інформації: точні дати відсутності вдома, місце перебування, номер кімнати, контактний телефон та інформацію про доступ до житла. Така інформація може бути використана для соціальної інженерії, фізичного злому та інших типів атак.</p>
                             </div>
                             <div class="comparison-item correct">
                                 <h3>Правильно <i class="fas fa-check"></i></h3>
@@ -240,7 +511,7 @@
                                         </div>
                                     </div>
                                     <div class="post-content">
-                                        <p>Радий, що скоро відпочинок! Буду насолоджуватися канікулами та ділитися враженнями після повернення.</p>
+                                        <p>Радий, що скоро відпочинок! Буду насолоджуватися відпусткою та ділитися враженнями після повернення.</p>
                                         <img src="./img/safe-post.svg" alt="Фото відпустки" class="post-img">
                                     </div>
                                     <div class="post-footer">
@@ -249,7 +520,7 @@
                                         <span><i class="fas fa-share"></i> 3</span>
                                     </div>
                                 </div>
-                                <p class="explanation">Ця публікація не розкриває конкретних деталей про відпустку, не вказує точні дати відсутності вдома та місце перебування. Пост видимий лише для друзів, а не для всіх користувачів.</p>
+                                <p class="explanation">Ця публікація не розкриває конкретних деталей про відпустку, не вказує точні дати відсутності вдома та місце перебування. Пост видимий лише для друзів, а не для всіх користувачів, що зменшує ризик використання цієї інформації зловмисниками для таргетованих атак.</p>
                             </div>
                         </div>
                     </div>
@@ -339,10 +610,10 @@
                                         <li><i class="fas fa-check"></i> Дозвіл на повідомлення від усіх</li>
                                         <li><i class="fas fa-check"></i> Синхронізація контактів увімкнена</li>
                                         <li><i class="fas fa-times"></i> Обмежений режим вимкнений</li>
-                                        <li><i class="fas fa-times"></i> Батьківський контроль вимкнений</li>
+                                        <li><i class="fas fa-times"></i> Розширені налаштування приватності вимкнені</li>
                                     </ul>
                                 </div>
-                                <p class="explanation">Ці налаштування TikTok не забезпечують належного захисту вашої приватності. Публічний акаунт, дозвіл на завантаження та дуети з вашими відео, можливість отримання коментарів та повідомлень від незнайомців створюють ризики для вашої безпеки.</p>
+                                <p class="explanation">Ці налаштування TikTok не забезпечують належного захисту вашої приватності. Публічний акаунт, дозвіл на завантаження та дуети з вашими відео, можливість отримання коментарів та повідомлень від незнайомців створюють ризики для вашої безпеки та можуть призвести до витоку персональних даних або цільових атак.</p>
                             </div>
                             <div class="comparison-item correct">
                                 <h3>Безпечні налаштування TikTok <i class="fas fa-check"></i></h3>
@@ -356,10 +627,10 @@
                                         <li><i class="fas fa-user-friends"></i> Повідомлення лише від друзів</li>
                                         <li><i class="fas fa-times"></i> Синхронізація контактів вимкнена</li>
                                         <li><i class="fas fa-check"></i> Обмежений режим увімкнений</li>
-                                        <li><i class="fas fa-check"></i> Батьківський контроль увімкнений (Family Pairing)</li>
+                                        <li><i class="fas fa-check"></i> Розширені налаштування приватності увімкнені</li>
                                     </ul>
                                 </div>
-                                <p class="explanation">Ці налаштування TikTok забезпечують надійний захист вашої приватності. Приватний акаунт, заборона завантаження та дуетів з вашими відео, обмеження коментарів та повідомлень, обмежений режим та батьківський контроль значно підвищують безпеку вашого облікового запису.</p>
+                                <p class="explanation">Ці налаштування TikTok забезпечують надійний захист вашої приватності. Приватний акаунт, заборона завантаження та дуетів з вашими відео, обмеження коментарів та повідомлень, а також розширені налаштування приватності значно підвищують безпеку вашого облікового запису та захищають від несанкціонованого доступу.</p>
                             </div>
                         </div>
                     </div>
@@ -374,7 +645,7 @@
                                         </div>
                                     </div>
                                     <div class="post-content">
-                                        <p>Радий, що скоро відпочинок! Буду насолоджуватися канікулами та ділитися враженнями після повернення.</p>
+                                        <p>Радий, що скоро відпочинок! Буду насолоджуватися відпусткою та ділитися враженнями після повернення.</p>
                                         <img src="./img/safe-post.svg" alt="Фото відпустки" class="post-img">
                                     </div>
                                     <div class="post-footer">
@@ -395,37 +666,183 @@
     <section id="quiz" class="section">
         <div class="container">
             <div class="section-header">
-                <h2>Перевір свої знання</h2>
-                <p>Пройдіть тест, щоб оцінити свої знання з безпеки в соціальних мережах</p>
+                <h2>Перевірте свої знання</h2>
+                <p>Пройдіть тест, щоб оцінити свої знання з безпеки в соціальних мережах та кіберзахисту</p>
             </div>
-            <div class="quiz-container">
-                <div class="quiz-progress">
+            <div class="quiz-container" role="application" aria-label="Інтерактивний квіз з кібербезпеки">
+                <div class="quiz-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Прогрес проходження квізу">
                     <div class="progress-bar">
                         <div class="progress" style="width: 0%;"></div>
                     </div>
                     <div class="progress-text">Питання <span id="current-question">1</span> з <span id="total-questions">10</span></div>
                 </div>
-                <div id="quiz-content">
-                    <!-- Quiz questions will be loaded here via JavaScript -->
+                <div id="quiz-content" role="group" aria-live="polite" aria-label="Поточне питання квізу">
+                    <!-- Quiz questions will be loaded here via JavaScript with more advanced technical content -->
                 </div>
-                <div class="quiz-controls">
-                    <button id="prev-btn" class="btn btn-secondary" disabled>Назад</button>
-                    <button id="next-btn" class="btn">Далі</button>
-                    <button id="submit-btn" class="btn" style="display: none;">Завершити</button>
+                <div class="quiz-controls" role="group" aria-label="Навігація квізу">
+                    <button id="prev-btn" class="btn btn-secondary" disabled aria-label="Перейти до попереднього питання">Назад</button>
+                    <button id="next-btn" class="btn" aria-label="Перейти до наступного питання">Далі</button>
+                    <button id="submit-btn" class="btn" style="display: none;" aria-label="Завершити квіз та переглянути результати">Завершити</button>
                 </div>
             </div>
-            <div id="quiz-results" style="display: none;">
+            <div id="quiz-results" style="display: none;" role="region" aria-label="Результати квізу" aria-live="polite">
                 <h3>Ваш результат</h3>
                 <div class="result-score">
-                    <div class="score-circle">
+                    <div class="score-circle" role="img" aria-label="Візуальне представлення результату">
                         <span id="score-percent">0%</span>
                     </div>
-                    <p>Ви відповіли правильно на <span id="correct-answers">0</span> з <span id="total-questions-result">10</span> питань</p>
+                    <p id="score-text">Ви відповіли правильно на <span id="correct-answers">0</span> з <span id="total-questions-result">10</span> питань</p>
                 </div>
                 <div class="result-feedback">
                     <p id="result-message"></p>
                 </div>
-                <button id="restart-btn" class="btn">Пройти тест знову</button>
+                <button id="restart-btn" class="btn" aria-label="Розпочати квіз спочатку">Пройти тест знову</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="tools" class="section bg-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2>Інтерактивні інструменти безпеки</h2>
+                <p>Практичні інструменти для перевірки та покращення вашої цифрової безпеки</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3>Генератор паролів</h3>
+                    <p>Створюйте надійні паролі з налаштуваними параметрами</p>
+                    <div class="password-generator">
+                        <div class="password-options">
+                            <label>
+                                <input type="range" id="password-length" min="8" max="32" value="16">
+                                <span>Довжина: <span id="length-value">16</span></span>
+                            </label>
+                            <label>
+                                <input type="checkbox" id="include-uppercase" checked>
+                                <span>Великі літери</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" id="include-numbers" checked>
+                                <span>Цифри</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" id="include-symbols" checked>
+                                <span>Символи</span>
+                            </label>
+                        </div>
+                        <div class="password-output">
+                            <input type="text" id="generated-password" readonly placeholder="Згенерований пароль">
+                            <button id="generate-password" class="btn btn-primary">Генерувати</button>
+                            <button id="copy-password" class="btn btn-secondary">Копіювати</button>
+                        </div>
+                        <div class="password-strength">
+                            <div class="strength-bar">
+                                <div class="strength-fill"></div>
+                            </div>
+                            <span class="strength-text">Натисніть "Генерувати"</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <h3>Перевірка витоку даних</h3>
+                    <p>Дізнайтеся, чи були ваші дані скомпрометовані</p>
+                    <div class="breach-checker">
+                        <div class="input-group">
+                            <input type="email" id="email-check" placeholder="Введіть вашу електронну пошту">
+                            <button id="check-breach" class="btn btn-primary">Перевірити</button>
+                        </div>
+                        <div id="breach-result" class="breach-result hidden">
+                            <div class="result-content"></div>
+                        </div>
+                        <p class="disclaimer">Ваша електронна пошта не зберігається і використовується лише для перевірки</p>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Аналізатор приватності</h3>
+                    <p>Оцініть рівень приватності ваших соціальних мереж</p>
+                    <div class="privacy-analyzer">
+                        <div class="privacy-questions">
+                            <div class="question">
+                                <label>Ваш профіль публічний?</label>
+                                <select class="privacy-select" data-weight="30">
+                                    <option value="0">Так, повністю публічний</option>
+                                    <option value="50">Частково приватний</option>
+                                    <option value="100">Повністю приватний</option>
+                                </select>
+                            </div>
+                            <div class="question">
+                                <label>Хто може бачити ваші пости?</label>
+                                <select class="privacy-select" data-weight="25">
+                                    <option value="0">Всі користувачі</option>
+                                    <option value="50">Друзі друзів</option>
+                                    <option value="100">Тільки друзі</option>
+                                </select>
+                            </div>
+                            <div class="question">
+                                <label>Чи видима ваша контактна інформація?</label>
+                                <select class="privacy-select" data-weight="20">
+                                    <option value="0">Так, всім</option>
+                                    <option value="50">Тільки друзям</option>
+                                    <option value="100">Нікому</option>
+                                </select>
+                            </div>
+                            <div class="question">
+                                <label>Чи використовуєте двофакторну автентифікацію?</label>
+                                <select class="privacy-select" data-weight="25">
+                                    <option value="0">Ні</option>
+                                    <option value="100">Так</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button id="analyze-privacy" class="btn btn-primary">Аналізувати</button>
+                        <div id="privacy-result" class="privacy-result hidden">
+                            <div class="score-display">
+                                <div class="score-circle">
+                                    <span class="score-number">0</span>
+                                    <span class="score-label">%</span>
+                                </div>
+                            </div>
+                            <div class="recommendations"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3>Перевірка посилань</h3>
+                    <p>Перевіряйте підозрілі посилання перед переходом</p>
+                    <div class="link-checker">
+                        <div class="input-group">
+                            <input type="url" id="url-check" placeholder="Вставте посилання для перевірки">
+                            <button id="check-url" class="btn btn-primary">Перевірити</button>
+                        </div>
+                        <div id="url-result" class="url-result hidden">
+                            <div class="result-content"></div>
+                        </div>
+                        <div class="safety-tips">
+                            <h4>Ознаки підозрілих посилань:</h4>
+                            <ul>
+                                <li>Незнайомі домени або скорочені URL</li>
+                                <li>Орфографічні помилки в адресі</li>
+                                <li>Підозрілі розширення (.tk, .ml, .ga)</li>
+                                <li>Посилання з соціальних мереж від незнайомців</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -434,7 +851,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>Корисні посилання</h2>
-                <p>Офіційні джерела та рекомендації з безпеки в соціальних мережах</p>
+                <p>Професійні ресурси та рекомендації з кібербезпеки в соціальних мережах</p>
             </div>
             <div class="resources-grid">
                 <div class="resource-card">
@@ -449,25 +866,49 @@
                     <div class="resource-icon">
                         <i class="fas fa-book"></i>
                     </div>
-                    <h3>Онляндія</h3>
-                    <p>Проект з безпеки дітей в інтернеті, що містить навчальні матеріали для дітей, батьків та вчителів.</p>
-                    <a href="https://disted.edu.vn.ua/media/bp/html/etusivu.htm" target="_blank" class="resource-link">Відвідати сайт <i class="fas fa-external-link-alt"></i></a>
+                    <h3>OWASP</h3>
+                    <p>Міжнародна організація, що надає рекомендації з безпеки веб-додатків та соціальних мереж, включаючи захист від соціальної інженерії.</p>
+                    <a href="https://owasp.org/" target="_blank" class="resource-link">Відвідати сайт <i class="fas fa-external-link-alt"></i></a>
                 </div>
                 <div class="resource-card">
                     <div class="resource-icon">
-                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-lock"></i>
                     </div>
-                    <h3>Stop Булінг</h3>
-                    <p>Урядовий портал для протидії булінгу, включаючи кібербулінг у соціальних мережах.</p>
-                    <a href="https://stop-bullying.com.ua/" target="_blank" class="resource-link">Відвідати сайт <i class="fas fa-external-link-alt"></i></a>
+                    <h3>Cybersecurity & Infrastructure Security Agency</h3>
+                    <p>Ресурс з рекомендаціями щодо захисту особистих даних та безпечного використання соціальних мереж.</p>
+                    <a href="https://www.cisa.gov/" target="_blank" class="resource-link">Відвідати сайт <i class="fas fa-external-link-alt"></i></a>
                 </div>
                 <div class="resource-card">
                     <div class="resource-icon">
-                        <i class="fas fa-child"></i>
+                        <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3>Центр безпечного інтернету</h3>
-                    <p>Інформаційно-освітня кампанія для дітей, батьків та вчителів про безпечне використання інтернет-технологій.</p>
-                    <a href="https://betterinternetcentre.org/" target="_blank" class="resource-link">Відвідати сайт <i class="fas fa-external-link-alt"></i></a>
+                    <h3>CERT-UA</h3>
+                    <p>Команда реагування на комп'ютерні надзвичайні події України, що надає рекомендації з кібербезпеки та інформацію про актуальні загрози.</p>
+                    <a href="https://cert.gov.ua/" target="_blank" class="resource-link">Відвідати сайт <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>NIST Privacy Framework</h3>
+                    <p>Стандарти управління приватністю та персональними даними для організацій та індивідуальних користувачів.</p>
+                    <a href="https://www.nist.gov/privacy-framework" target="_blank" class="resource-link">Відвідати сайт <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Electronic Frontier Foundation</h3>
+                    <p>Міжнародна організація з захисту цифрових прав та приватності в інтернеті, включаючи соціальні мережі.</p>
+                    <a href="https://www.eff.org/" target="_blank" class="resource-link">Відвідати сайт <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Privacy Tools</h3>
+                    <p>Комплексний ресурс з інструментами та рекомендаціями для захисту приватності в цифровому середовищі.</p>
+                    <a href="https://www.privacytools.io/" target="_blank" class="resource-link">Відвідати сайт <i class="fas fa-external-link-alt"></i></a>
                 </div>
                 <div class="resource-card">
                     <div class="resource-icon">
@@ -488,32 +929,34 @@
             </div>
         </div>
     </section>
+    </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
                     <h2>СоцМережі<span>Безпека</span></h2>
-                    <p>Навчальний ресурс для старшокласників</p>
+                    <p>Професійний ресурс з кібербезпеки</p>
                 </div>
-                <div class="footer-links">
+                <nav class="footer-links" aria-label="Навігація футера">
                     <h3>Навігація</h3>
                     <ul>
                         <li><a href="#home">Головна</a></li>
                         <li><a href="#basics">Основи безпеки</a></li>
                         <li><a href="#examples">Приклади</a></li>
                         <li><a href="#quiz">Перевір себе</a></li>
-                        <li><a href="#resources">Корисні посилання</a></li>
+                        <li><a href="#tools">Інструменти</a></li>
+                        <li><a href="#resources">Ресурси</a></li>
                     </ul>
-                </div>
+                </nav>
                 <div class="footer-contact">
                     <h3>Контакти</h3>
-                    <p>Якщо у вас є питання або пропозиції щодо покращення цього ресурсу, будь ласка, зв'яжіться з нами:</p>
-                    <p><i class="fas fa-envelope"></i> info@socmerezhi-bezpeka.ua</p>
+                    <p>Якщо у вас є питання, пропозиції щодо покращення цього ресурсу або потреба в консультації з питань кібербезпеки, будь ласка, зв'яжіться з нами:</p>
+                    <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:info@socmerezhi-bezpeka.ua">info@socmerezhi-bezpeka.ua</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 СоцМережіБезпека. Всі права захищені. Створено з освітньою метою.</p>
+                <p>&copy; 2023 СоцМережіБезпека. Всі права захищені.</p>
             </div>
         </div>
     </footer>

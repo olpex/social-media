@@ -1,14 +1,43 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Menu Toggle with animation
+    // Mobile Menu Toggle with animation and accessibility
     const menuToggle = document.querySelector('.menu-toggle');
     const menu = document.querySelector('.menu');
     const header = document.querySelector('header');
     
     if (menuToggle && menu) {
         menuToggle.addEventListener('click', function() {
+            const isExpanded = menu.classList.contains('show');
+            
             menu.classList.toggle('show');
             menuToggle.classList.toggle('active');
             document.body.classList.toggle('menu-open');
+            
+            // Update ARIA attributes for accessibility
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            menuToggle.setAttribute('aria-label', !isExpanded ? 'Закрити мобільне меню' : 'Відкрити мобільне меню');
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!menuToggle.contains(e.target) && !menu.contains(e.target) && menu.classList.contains('show')) {
+                menu.classList.remove('show');
+                menuToggle.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'Відкрити мобільне меню');
+            }
+        });
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && menu.classList.contains('show')) {
+                menu.classList.remove('show');
+                menuToggle.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'Відкрити мобільне меню');
+                menuToggle.focus();
+            }
         });
     }
     
@@ -217,6 +246,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const correctAnswersEl = document.getElementById('correct-answers');
     const resultMessageEl = document.getElementById('result-message');
     
+    // Quiz accessibility announcements
+    const announceToScreenReader = (message) => {
+        const announcement = document.createElement('div');
+        announcement.setAttribute('aria-live', 'polite');
+        announcement.setAttribute('aria-atomic', 'true');
+        announcement.className = 'sr-only';
+        announcement.textContent = message;
+        document.body.appendChild(announcement);
+        
+        setTimeout(() => {
+            document.body.removeChild(announcement);
+        }, 1000);
+    };
+    
     // Quiz Questions
     const quizQuestions = [
         {
@@ -330,7 +373,7 @@ document.addEventListener('DOMContentLoaded', function() {
             explanation: "Кібербулінг — це форма цькування з використанням цифрових технологій. Він включає систематичні образи, погрози, поширення неправдивої інформації та інші дії, спрямовані на приниження або залякування людини."
         },
         {
-            question: "Яке налаштування Facebook є найважливішим для захисту приватності підлітка?",
+            question: "Яке налаштування Facebook є найважливішим для захисту приватності користувача?",
             options: [
                 "Дозвіл на позначення вас у публікаціях без вашого схвалення",
                 "Публічний список друзів",
@@ -338,10 +381,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Дозвіл на пошук за номером телефону"
             ],
             correctAnswer: 2,
-            explanation: "Приватний акаунт з переглядом позначень перед публікацією дає вам контроль над тим, хто може бачити ваш профіль і в яких публікаціях ви з'являєтесь, що є критично важливим для захисту приватності підлітків."
+            explanation: "Приватний акаунт з переглядом позначень перед публікацією дає вам контроль над тим, хто може бачити ваш профіль і в яких публікаціях ви з'являєтесь, що є критично важливим для захисту приватності та запобігання несанкціонованому використанню ваших даних."
         },
         {
-            question: "Яка функція Instagram допомагає захистити підлітків від небажаного контенту?",
+            question: "Яка функція Instagram допомагає захистити користувачів від небажаного контенту та цільових атак?",
             options: [
                 "Автоматичне збереження історій",
                 "Фільтри коментарів та обмеження взаємодії",
@@ -349,21 +392,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Публічний акаунт"
             ],
             correctAnswer: 1,
-            explanation: "Фільтри коментарів та обмеження взаємодії в Instagram дозволяють блокувати образливі слова та обмежувати, хто може коментувати ваші публікації, що захищає підлітків від небажаного контенту та потенційного кібербулінгу."
+            explanation: "Фільтри коментарів та обмеження взаємодії в Instagram дозволяють блокувати образливі слова та обмежувати, хто може коментувати ваші публікації, що захищає користувачів від небажаного контенту, потенційного кібербулінгу та соціальної інженерії."
         },
         {
-            question: "Яка функція TikTok спеціально розроблена для батьківського контролю?",
+            question: "Яка функція TikTok забезпечує найвищий рівень контролю над приватністю?",
             options: [
                 "Дозвіл на дуети з вашими відео",
                 "Синхронізація контактів",
-                "Family Pairing (Сімейний зв'язок)",
+                "Розширені налаштування приватності",
                 "Публічний акаунт"
             ],
             correctAnswer: 2,
-            explanation: "Family Pairing (Сімейний зв'язок) — це спеціальна функція TikTok, яка дозволяє батькам пов'язати свій акаунт з акаунтом дитини та керувати такими налаштуваннями, як обмеження часу використання, фільтрація контенту та обмеження прямих повідомлень."
+            explanation: "Розширені налаштування приватності в TikTok дозволяють контролювати такі параметри, як обмеження часу використання, фільтрація контенту та обмеження прямих повідомлень, що значно підвищує рівень безпеки вашого акаунту."
         },
         {
-            question: "Яке налаштування часу екрану є рекомендованим для підлітків у соціальних мережах?",
+            question: "Яке налаштування часу екрану є рекомендованим для збереження продуктивності при використанні соціальних мереж?",
             options: [
                 "Необмежений час використання для розвитку соціальних навичок",
                 "Встановлення чітких часових обмежень та перерв",
@@ -371,7 +414,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Повна заборона на використання соціальних мереж"
             ],
             correctAnswer: 1,
-            explanation: "Встановлення чітких часових обмежень та регулярних перерв допомагає запобігти надмірному використанню соціальних мереж, що може негативно впливати на психічне здоров'я, сон та навчання підлітків."
+            explanation: "Встановлення чітких часових обмежень та регулярних перерв допомагає запобігти надмірному використанню соціальних мереж, що може негативно впливати на продуктивність, психічне здоров'я та якість сну."
         },
         {
             question: "Яка з цих дій є найбезпечнішою при використанні Instagram?",
@@ -383,6 +426,50 @@ document.addEventListener('DOMContentLoaded', function() {
             ],
             correctAnswer: 2,
             explanation: "Регулярна перевірка та оновлення налаштувань приватності є важливою практикою безпеки, оскільки соціальні мережі часто оновлюють свої функції та політики приватності, і це допомагає забезпечити, що ваш акаунт залишається захищеним."
+        },
+        {
+            question: "Як розпізнати спробу соціальної інженерії в соціальних мережах?",
+            options: [
+                "Повідомлення з терміновими запитами особистої інформації",
+                "Звичайні повідомлення від друзів",
+                "Публічні пости з новинами",
+                "Реклама товарів"
+            ],
+            correctAnswer: 0,
+            explanation: "Соціальна інженерія часто використовує тактики тиску, терміновості та емоційного впливу для отримання конфіденційної інформації."
+        },
+        {
+            question: "Чому небезпечно використовувати публічний Wi-Fi для входу в соціальні мережі?",
+            options: [
+                "Дані можуть бути перехоплені зловмисниками",
+                "Інтернет працює повільніше",
+                "Це коштує дорожче",
+                "Акаунт може бути заблокований"
+            ],
+            correctAnswer: 0,
+            explanation: "Публічні Wi-Fi мережі часто не захищені, що дозволяє зловмисникам перехоплювати передані дані, включаючи паролі та особисту інформацію."
+        },
+        {
+            question: "Які ознаки можуть вказувати на фейковий профіль?",
+            options: [
+                "Мало фото, нові акаунти, підозрілі запити в друзі",
+                "Багато підписників",
+                "Регулярні пости",
+                "Верифікований акаунт"
+            ],
+            correctAnswer: 0,
+            explanation: "Фейкові профілі часто мають обмежену кількість контенту, створені недавно, використовують чужі фото та надсилають підозрілі повідомлення."
+        },
+        {
+            question: "Що слід робити для безпечного управління персональними даними?",
+            options: [
+                "Регулярно переглядати та видаляти непотрібні дані",
+                "Зберігати всі дані назавжди",
+                "Надавати доступ усім додаткам",
+                "Ігнорувати налаштування приватності"
+            ],
+            correctAnswer: 0,
+            explanation: "Регулярний аудит персональних даних, видалення непотрібної інформації та контроль доступу додатків допомагають мінімізувати ризики витоку даних."
         }
     ];
     
@@ -464,9 +551,35 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Add event listeners to options
                 const options = document.querySelectorAll('.quiz-option');
                 options.forEach((option, i) => {
+                    // Make options focusable and add ARIA attributes
+                    option.setAttribute('tabindex', '0');
+                    option.setAttribute('role', 'radio');
+                    option.setAttribute('aria-checked', userAnswers[index] === i ? 'true' : 'false');
+                    option.setAttribute('aria-describedby', `question-${index}`);
+                    
+                    // Click handler
                     option.addEventListener('click', function() {
                         const optionIndex = parseInt(this.getAttribute('data-index'));
                         selectOption(optionIndex);
+                    });
+                    
+                    // Keyboard navigation
+                    option.addEventListener('keydown', function(e) {
+                        const optionIndex = parseInt(this.getAttribute('data-index'));
+                        
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            selectOption(optionIndex);
+                            announceToScreenReader(`Вибрано варіант ${String.fromCharCode(65 + optionIndex)}`);
+                        } else if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                            e.preventDefault();
+                            const nextOption = options[Math.min(i + 1, options.length - 1)];
+                            nextOption.focus();
+                        } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                            e.preventDefault();
+                            const prevOption = options[Math.max(i - 1, 0)];
+                            prevOption.focus();
+                        }
                     });
                     
                     // Add staggered entrance animation for options
@@ -545,8 +658,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update UI to show selected option with animation
         const options = document.querySelectorAll('.quiz-option');
         
-        // First remove selected class with animation
-        options.forEach(option => {
+        // First remove selected class with animation and update ARIA
+        options.forEach((option, i) => {
+            option.setAttribute('aria-checked', 'false');
             if (option.classList.contains('selected')) {
                 // Add a quick transition out animation
                 option.classList.add('deselect-animation');
@@ -565,6 +679,9 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             const selectedOption = document.querySelector(`.quiz-option[data-index="${optionIndex}"]`);
             if (selectedOption) {
+                // Update ARIA attributes
+                selectedOption.setAttribute('aria-checked', 'true');
+                
                 // Add selection animation
                 selectedOption.classList.add('select-animation');
                 selectedOption.classList.add('selected');
@@ -573,6 +690,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => {
                     selectedOption.classList.remove('select-animation');
                 }, 300);
+                
+                // Announce selection to screen readers
+                const optionText = selectedOption.querySelector('.option-text').textContent;
+                announceToScreenReader(`Вибрано: ${optionText}`);
             }
             
             // Enable next button if it was disabled
@@ -607,6 +728,9 @@ document.addEventListener('DOMContentLoaded', function() {
             currentQuestion--;
             loadQuestion(currentQuestion);
             
+            // Announce navigation to screen readers
+            announceToScreenReader(`Питання ${currentQuestion + 1} з ${quizQuestions.length}`);
+            
             // Scroll to top of quiz container if needed
             const quizContainer = document.querySelector('.quiz-container');
             if (quizContainer) {
@@ -629,6 +753,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             currentQuestion++;
             loadQuestion(currentQuestion);
+            
+            // Announce navigation to screen readers
+            announceToScreenReader(`Питання ${currentQuestion + 1} з ${quizQuestions.length}`);
             
             // Scroll to top of quiz container if needed
             const quizContainer = document.querySelector('.quiz-container');
@@ -747,6 +874,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Restart quiz with enhanced animations
     function restartQuiz() {
+        // Announce restart to screen readers
+        announceToScreenReader('Квіз перезапускається. Підготовка першого питання.');
+        
         // Add restart animation to results container
         quizResults.classList.add('fade-out');
         
@@ -787,8 +917,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Load first question
                 loadQuestion(currentQuestion);
                 
-                // Reset progress bar with animation
+                // Reset progress bar with animation and ARIA attributes
                 if (progressBar) {
+                    const progressContainer = progressBar.parentElement.parentElement;
+                    progressContainer.setAttribute('aria-valuenow', Math.round((1 / quizQuestions.length) * 100));
+                    
                     progressBar.style.transition = 'width 0.8s ease';
                     progressBar.style.width = `${(1 / quizQuestions.length) * 100}%`;
                     
@@ -801,6 +934,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => {
                     quizContent.classList.remove('fade-in');
                     document.querySelector('.quiz-controls').classList.remove('fade-in');
+                    
+                    // Announce that quiz is ready
+                    announceToScreenReader('Квіз готовий. Перше питання завантажено.');
+                    
+                    // Focus on the first quiz option for better accessibility
+                    const firstOption = document.querySelector('.quiz-option');
+                    if (firstOption) {
+                        firstOption.focus();
+                    }
                 }, 500);
                 
                 // Scroll to top of quiz container
@@ -916,4 +1058,304 @@ function createPlaceholderImages() {
             };
         }
     });
+}
+
+// Security Tools Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    initializeSecurityTools();
+});
+
+function initializeSecurityTools() {
+    // Password Generator
+    const passwordLength = document.getElementById('password-length');
+    const lengthValue = document.getElementById('length-value');
+    const includeUppercase = document.getElementById('include-uppercase');
+    const includeNumbers = document.getElementById('include-numbers');
+    const includeSymbols = document.getElementById('include-symbols');
+    const generatedPassword = document.getElementById('generated-password');
+    const generateBtn = document.getElementById('generate-password');
+    const copyBtn = document.getElementById('copy-password');
+    const strengthFill = document.querySelector('.strength-fill');
+    const strengthText = document.querySelector('.strength-text');
+
+    if (passwordLength && lengthValue) {
+        passwordLength.addEventListener('input', function() {
+            lengthValue.textContent = this.value;
+        });
+    }
+
+    if (generateBtn) {
+        generateBtn.addEventListener('click', generatePassword);
+    }
+
+    if (copyBtn) {
+        copyBtn.addEventListener('click', copyPassword);
+    }
+
+    function generatePassword() {
+        const length = parseInt(passwordLength.value);
+        let charset = 'abcdefghijklmnopqrstuvwxyz';
+        
+        if (includeUppercase.checked) {
+            charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        }
+        if (includeNumbers.checked) {
+            charset += '0123456789';
+        }
+        if (includeSymbols.checked) {
+            charset += '!@#$%^&*()_+-=[]{}|;:,.<>?';
+        }
+
+        let password = '';
+        for (let i = 0; i < length; i++) {
+            password += charset.charAt(Math.floor(Math.random() * charset.length));
+        }
+
+        generatedPassword.value = password;
+        updatePasswordStrength(password);
+    }
+
+    function updatePasswordStrength(password) {
+        let score = 0;
+        let feedback = '';
+
+        // Length check
+        if (password.length >= 12) score += 25;
+        else if (password.length >= 8) score += 15;
+        else score += 5;
+
+        // Character variety checks
+        if (/[a-z]/.test(password)) score += 15;
+        if (/[A-Z]/.test(password)) score += 15;
+        if (/[0-9]/.test(password)) score += 15;
+        if (/[^A-Za-z0-9]/.test(password)) score += 20;
+
+        // Bonus for length
+        if (password.length >= 16) score += 10;
+
+        // Update visual feedback
+        strengthFill.style.width = score + '%';
+        
+        if (score >= 80) {
+            strengthFill.style.background = 'linear-gradient(90deg, #10b981, #059669)';
+            feedback = 'Дуже надійний пароль';
+        } else if (score >= 60) {
+            strengthFill.style.background = 'linear-gradient(90deg, #f59e0b, #d97706)';
+            feedback = 'Надійний пароль';
+        } else if (score >= 40) {
+            strengthFill.style.background = 'linear-gradient(90deg, #f97316, #ea580c)';
+            feedback = 'Середній пароль';
+        } else {
+            strengthFill.style.background = 'linear-gradient(90deg, #ef4444, #dc2626)';
+            feedback = 'Слабкий пароль';
+        }
+
+        strengthText.textContent = feedback;
+    }
+
+    function copyPassword() {
+        if (generatedPassword.value) {
+            navigator.clipboard.writeText(generatedPassword.value).then(() => {
+                copyBtn.textContent = 'Скопійовано!';
+                setTimeout(() => {
+                    copyBtn.textContent = 'Копіювати';
+                }, 2000);
+            });
+        }
+    }
+
+    // Breach Checker
+    const emailCheck = document.getElementById('email-check');
+    const checkBreachBtn = document.getElementById('check-breach');
+    const breachResult = document.getElementById('breach-result');
+
+    if (checkBreachBtn) {
+        checkBreachBtn.addEventListener('click', checkDataBreach);
+    }
+
+    function checkDataBreach() {
+        const email = emailCheck.value.trim();
+        if (!email || !isValidEmail(email)) {
+            showBreachResult('Будь ласка, введіть дійсну електронну адресу.', 'error');
+            return;
+        }
+
+        checkBreachBtn.textContent = 'Перевіряю...';
+        checkBreachBtn.disabled = true;
+
+        // Simulate API call (in real implementation, use HaveIBeenPwned API)
+        setTimeout(() => {
+            const isBreached = Math.random() > 0.7; // 30% chance of breach for demo
+            
+            if (isBreached) {
+                showBreachResult(
+                    `⚠️ Увага! Ваша електронна адреса була знайдена в ${Math.floor(Math.random() * 5) + 1} витоках даних. Рекомендуємо змінити паролі для всіх пов'язаних акаунтів.`,
+                    'warning'
+                );
+            } else {
+                showBreachResult(
+                    '✅ Хороші новини! Ваша електронна адреса не була знайдена в відомих витоках даних.',
+                    'success'
+                );
+            }
+
+            checkBreachBtn.textContent = 'Перевірити';
+            checkBreachBtn.disabled = false;
+        }, 2000);
+    }
+
+    function showBreachResult(message, type) {
+        const resultContent = breachResult.querySelector('.result-content');
+        resultContent.innerHTML = `<p class="result-${type}">${message}</p>`;
+        breachResult.classList.remove('hidden');
+    }
+
+    function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    // Privacy Analyzer
+    const analyzePrivacyBtn = document.getElementById('analyze-privacy');
+    const privacyResult = document.getElementById('privacy-result');
+    const privacySelects = document.querySelectorAll('.privacy-select');
+
+    if (analyzePrivacyBtn) {
+        analyzePrivacyBtn.addEventListener('click', analyzePrivacy);
+    }
+
+    function analyzePrivacy() {
+        let totalScore = 0;
+        let maxScore = 0;
+
+        privacySelects.forEach(select => {
+            const weight = parseInt(select.dataset.weight);
+            const value = parseInt(select.value);
+            totalScore += (value * weight) / 100;
+            maxScore += weight;
+        });
+
+        const finalScore = Math.round((totalScore / maxScore) * 100);
+        showPrivacyResult(finalScore);
+    }
+
+    function showPrivacyResult(score) {
+        const scoreNumber = privacyResult.querySelector('.score-number');
+        const recommendations = privacyResult.querySelector('.recommendations');
+        const scoreCircle = privacyResult.querySelector('.score-circle');
+
+        scoreNumber.textContent = score;
+        
+        // Update circle color based on score
+        if (score >= 80) {
+            scoreCircle.style.background = `conic-gradient(from 0deg, #10b981 0%, #10b981 ${score}%, #374151 ${score}%, #374151 100%)`;
+        } else if (score >= 60) {
+            scoreCircle.style.background = `conic-gradient(from 0deg, #f59e0b 0%, #f59e0b ${score}%, #374151 ${score}%, #374151 100%)`;
+        } else {
+            scoreCircle.style.background = `conic-gradient(from 0deg, #ef4444 0%, #ef4444 ${score}%, #374151 ${score}%, #374151 100%)`;
+        }
+
+        let recommendationText = '';
+        if (score >= 80) {
+            recommendationText = '🎉 Відмінно! Ваші налаштування приватності на високому рівні. Продовжуйте дотримуватися цих принципів.';
+        } else if (score >= 60) {
+            recommendationText = '👍 Добре! У вас є базовий захист, але є місце для покращення. Розгляньте можливість посилення приватності.';
+        } else if (score >= 40) {
+            recommendationText = '⚠️ Увага! Ваші налаштування приватності потребують покращення. Рекомендуємо переглянути налаштування.';
+        } else {
+            recommendationText = '🚨 Критично! Ваші дані під загрозою. Негайно змініть налаштування приватності!';
+        }
+
+        recommendations.innerHTML = `<p>${recommendationText}</p>`;
+        privacyResult.classList.remove('hidden');
+    }
+
+    // URL Checker
+    const urlCheck = document.getElementById('url-check');
+    const checkUrlBtn = document.getElementById('check-url');
+    const urlResult = document.getElementById('url-result');
+
+    if (checkUrlBtn) {
+        checkUrlBtn.addEventListener('click', checkURL);
+    }
+
+    function checkURL() {
+        const url = urlCheck.value.trim();
+        if (!url || !isValidURL(url)) {
+            showURLResult('Будь ласка, введіть дійсне посилання.', 'error');
+            return;
+        }
+
+        checkUrlBtn.textContent = 'Перевіряю...';
+        checkUrlBtn.disabled = true;
+
+        // Simulate URL analysis
+        setTimeout(() => {
+            const analysis = analyzeURL(url);
+            showURLResult(analysis.message, analysis.type);
+            
+            checkUrlBtn.textContent = 'Перевірити';
+            checkUrlBtn.disabled = false;
+        }, 1500);
+    }
+
+    function analyzeURL(url) {
+        const suspiciousDomains = ['.tk', '.ml', '.ga', '.cf'];
+        const shorteners = ['bit.ly', 'tinyurl.com', 't.co', 'goo.gl'];
+        
+        let riskScore = 0;
+        let warnings = [];
+
+        // Check for suspicious TLDs
+        if (suspiciousDomains.some(domain => url.includes(domain))) {
+            riskScore += 30;
+            warnings.push('Підозрілий домен верхнього рівня');
+        }
+
+        // Check for URL shorteners
+        if (shorteners.some(shortener => url.includes(shortener))) {
+            riskScore += 20;
+            warnings.push('Скорочене посилання - будьте обережні');
+        }
+
+        // Check for suspicious patterns
+        if (url.includes('login') || url.includes('verify') || url.includes('secure')) {
+            riskScore += 25;
+            warnings.push('Містить підозрілі ключові слова');
+        }
+
+        // Check for HTTPS
+        if (!url.startsWith('https://')) {
+            riskScore += 15;
+            warnings.push('Не використовує безпечне з\'єднання HTTPS');
+        }
+
+        let message, type;
+        if (riskScore >= 50) {
+            message = `🚨 Високий ризик! Це посилання може бути небезпечним.<br><strong>Попередження:</strong><br>• ${warnings.join('<br>• ')}`;
+            type = 'danger';
+        } else if (riskScore >= 25) {
+            message = `⚠️ Середній ризик. Будьте обережні з цим посиланням.<br><strong>Попередження:</strong><br>• ${warnings.join('<br>• ')}`;
+            type = 'warning';
+        } else {
+            message = '✅ Посилання виглядає безпечно, але завжди будьте обережні при переході за незнайомими посиланнями.';
+            type = 'success';
+        }
+
+        return { message, type };
+    }
+
+    function showURLResult(message, type) {
+        const resultContent = urlResult.querySelector('.result-content');
+        resultContent.innerHTML = `<div class="result-${type}">${message}</div>`;
+        urlResult.classList.remove('hidden');
+    }
+
+    function isValidURL(string) {
+        try {
+            new URL(string);
+            return true;
+        } catch (_) {
+            return false;
+        }
+    }
 }
